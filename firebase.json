@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/programming-language-playground",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
