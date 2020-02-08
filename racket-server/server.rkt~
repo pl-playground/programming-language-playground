@@ -39,9 +39,7 @@
            (form
             ,(display-code request)
             (p (input ((type "Submit"))))
-            (p ,(second (binding-handler request)))
-            (p , "TODO THESE ARE THE INSTRUCTIONS")
-            )))))
+            (p ,(second (binding-handler request))))))))
 
 ; start the server
 (serve/servlet main #:port 8080)
