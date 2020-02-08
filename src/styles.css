@@ -1,12 +1,19 @@
-/* Global Styles */
 
 @import '~codemirror/lib/codemirror.css';
 @import '~codemirror/theme/idea.css';
 @import '~codemirror/addon/fold/foldgutter.css';
 @import '~codemirror/addon/lint/lint.css';
 
+/* Global Styles */
+
+.CodeMirror {
+  font-family: Menlo, monospace;
+  font-size: 24px;
+}
+
 * {
-    font-family: 'Roboto', Arial, sans-serif;
+    /* font-family: 'Roboto', Arial, sans-serif; */
+    
     color: #616161;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -142,9 +149,4 @@
     background-color: #EEEEEE;
   }
   
-  
-  /*
-  Copyright Google LLC. All Rights Reserved.
-  Use of this source code is governed by an MIT-style license that
-  can be found in the LICENSE file at http://angular.io/license
-  */
+
