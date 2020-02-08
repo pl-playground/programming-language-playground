@@ -1,5 +1,6 @@
 #lang racket
 
+
 (require web-server/servlet
          web-server/servlet-env
          "interp1.rkt")
@@ -7,7 +8,7 @@
 (define (binding-handler request)
   (define bindings (request-bindings request))
   (if (exists-binding? 'name bindings)
-      (interp1 (extract-binding/single 'name bindings))
+      (extract-binding/single 'name bindings)
       ""))
 
 (define (display-code request)
@@ -24,5 +25,7 @@
             ,(display-code request)
             (p (input ((type "Submit"))))
             (p ,(binding-handler request)))))))
+
+
 
 (serve/servlet myresponse #:port 8080)
