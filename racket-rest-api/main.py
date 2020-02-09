@@ -1,4 +1,5 @@
 import subprocess
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -11,7 +12,9 @@ origins = [
     "http://localhost:8080",
     "http://localhost:4200",
     "http://localhost:*",
-    "null"
+    "null",
+    # This is for the cloud?
+    "http://example.appspot.com"
 ]
 
 app.add_middleware(
