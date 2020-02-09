@@ -1,0 +1,110 @@
+<h1 class="text-center">Semantics by Examples</h1>
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    
+
+    <div class="col-lg-5 col-4 mb-3">
+      <br>
+      <h4>Grammar</h4>
+      <br>
+
+      <div class="card card-body bg-light">
+        <code>
+          &lt;L1&gt; ::= &lt;num&gt; <br>
+                     | &lt;id&gt; <br>
+                     | ( + &lt;L1&gt; &lt;L1&gt;) <br>
+                     | ( * &lt;L1&gt; &lt;L1&gt;) <br>
+                     | ( bind &lt;id&gt; &lt;L1&gt; &lt;L1&gt;) <br>
+                     | ( fun &lt;id&gt; &lt;L1&gt; ) <br>
+                     | ( if0 &lt;L1&gt; &lt;L1&gt; &lt;L1&gt; ) <br>
+                     | ( call &lt;L1&gt; &lt;L1&gt;)
+        </code>
+    </div> 
+
+    <br>
+
+    <h4> Evaluation Strategies</h4>
+    <br>
+
+    <h5> Lexical + Strict </h5>
+    <p> In lexical (static) scope, each identifier gets its value from the scope of its definition, not its use.
+        In strict (eager) evaluation strategy, an expression is evaluated as soon as it is bound to a variable. Examples: Scheme, OCaml
+
+    </p>
+
+    <h5> Dynamic + Strict </h5>
+    <p>  Each identifier gets its value from the scope of its use, not its definition. Examples: Bash, Emacs Lisp</p>
+
+    <h5> Lexical + Lazy </h5>
+    <p> Delays evaluation untill needed (call by name), follows call by value convention. Examples: ALGOL 60, Haskell (call by need)</p>
+
+    </div>
+
+    <div class="col-lg-6 col-12 mb-3">
+      <br>
+      <h4> Interpreter </h4>
+      <br>
+
+      <div class="ngx-codemirror mb-2">
+        <ngx-codemirror [options]="options" [ngModel]="defaults[mode]" [disabled]="readOnly" [autoFocus]="true"
+          (ngModelChange)="handleChange($event)"></ngx-codemirror>
+      </div>
+
+      <br>
+
+      <div id="boxes">
+
+        <div id="leftbox">
+          <form class="form-inline">
+            <select class="form-control mr-1 mb-1" name="state" [(ngModel)]="current_interpreter">
+              <option value="interp1">Lexical+Strict</option>
+              <option value="interp2">Dynamic+Strict</option>
+              <option value="interp3">Lexical+Lazy</option>
+            </select>
+          </form>
+        </div>
+        
+        <div id="leftbox">
+          <div class="btn-group-toggle mb-1 mr-1">
+            <button class="btn btn-success" (click)="run()">Run</button>
+          </div>
+
+        </div>
+
+        <div id="rightbox" style="font-size: small;">
+          <code> {{ this.value }} </code>
+        </div>
+
+        <br><br><br>
+        <h3> Made by:</h3>
+        <p>Atharva Shukla <br>
+           Nithin Saripalli <br>
+          Deepak Ramesh Sethuraman
+          </p>
+
+      </div>
+
+      <br>
+
+      <div class="mb-3">
+        <mdo-github-button
+          count="true"
+          size="large"
+          user="atharvashukla"
+          repo="programming-language-playground"
+        ></mdo-github-button>
+    
+    
+    
+    </div>
+
+  </div>​
+
+
+    <div class="col-lg-1 mb-3">
+      
+    <!-- <h1>Right</h1> -->
+    </div>
+  </div>
+</div>
