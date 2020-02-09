@@ -1,6 +1,7 @@
 #lang racket
 
-(require "environment.rkt" "parser.rkt")
+
+(require "subst-cache.rkt" "parser.rkt")
 
 
 (define prog1
@@ -26,9 +27,10 @@
 
 (module+ test
   (require rackunit)
-  (check-equal? (interp prog1) 110)
+    (check-exn (lambda (e) (exn:fail? e))
+             (λ () (interp prog1)))
   (check-equal? (interp prog2) 3628800)
-  (check-equal? (interp prog3) 7))
+  (check-equal? (interp prog3) 9))
 
 
 #; {Values = Integer || `(function-value ,Var ,Expr ,Env)}
@@ -37,27 +39,31 @@
       (and (cons? x) (equal? (first x) 'function-value))))
 
 ; S-expression -> Value
-(define (interp lang [env empty])
+(define (interp lang [sc empty])
   (match lang
     [(? number?) lang]
-    [(? symbol?) (if (defined? lang env) (lookup lang env) (error "undeclared variable"))]
-    [`(+ ,l ,r) (+ (interp l env) (interp r env))]
-    [`(* ,l ,r) (* (interp l env) (interp r env))]
+    [(? symbol?) (if (defined? lang sc) (lookup lang sc) (error (format "undeclared variable ~a" lang)))]
+    [`(+ ,l ,r) (+ (interp l sc) (interp r sc))]
+    [`(* ,l ,r) (* (interp l sc) (interp r sc))]
     [`(bind ,l ,r ,b) #;(interp b (add l (interp r env) env))
-                      (interp b (add-rec l (λ (env) (interp r env)) env))]
-    [`(fun ,p ,b) `(function-value ,p ,b ,env)]
-    [`(call ,f ,a) (fun-apply (interp f env) (interp a env))]
+                      (interp b (add-rec l (λ (env) (interp r env)) sc))]
+    [`(fun ,p ,b) `(function-value ,p ,b)]
+    [`(call ,f ,a) (fun-apply (interp f sc) (interp a sc) sc)]
     [`(if0 ,c ,t ,e)
-     (define test-value (interp c env))
+     (define test-value (interp c sc))
      (if (and (number? test-value) (= test-value 0))
-         (interp t env)
-         (interp e env))]))
+         (interp t sc)
+         (interp e sc))]))
 
 ; Value Value -> Value 
-(define (fun-apply function-representation argument-value)
+(define (fun-apply function-representation argument-value sc)
   (match function-representation
-    [`(function-value ,fpara ,fbody ,env)
-     (interp fbody (add fpara argument-value env))]))
+    [`(function-value ,fpara ,fbody)
+     (interp fbody (add fpara argument-value sc))]))
 
 
-(displayln (interp (parser (command-line #:args (str) str))))
+; (displayln (interp1 (command-line #:args (str) str)))
+
+
+
+

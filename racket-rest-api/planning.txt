@@ -1,0 +1,28 @@
+L1 ::= num
+    | var
+    | (+ L1 L1)
+    | (* L1 L1)
+    | ( bind var L1 L1)
+    | ( fun var L1 )
+    | ( if L1 L1 L1 )
+    | ( call L1 L1)
+
+
+L1 ::= num
+    | var
+    | (+ L1 ...)
+    | (* L1 ...)
+    | ( bind (( var L1 ) ... ) L1 )
+    | ( fun ( var ... ) L1 )
+    | ( if L1 L1 L1 )
+    | ( L1 L1 ... )
+
+
+Language 1: strict, pass by value, lexical scope   [uses environments]
+Language 2: strict, pass by value, dynamic scope   [uses substitution cache]
+Language 3: lazy, pass by value, lexical scope     [implement laziness]
+Language 4: strict, pass by name, lexical scope    [see matthias' notes]
+
+
+
+Language 5: Language 1 with types + type inference [implement if you have time]

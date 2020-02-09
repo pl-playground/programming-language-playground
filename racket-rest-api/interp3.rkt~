@@ -1,0 +1,31 @@
+#lang racket
+
+(require "interp-delay.rkt")
+
+
+(struct promise [p] #:transparent)
+#; {Promise = (U (promise [-> Promise]) Value)}
+#; {Value = Number || (function-value parameter FExpr Env)}
+   
+#; {(U Promise Value) -> Value}
+(define (promise->value Promise-or-value)
+  (cond
+    [(promise? Promise-or-value)
+     (promise->value [(promise-p Promise-or-value)])]
+    [else Promise-or-value]))
+
+(require (prefix-in name: "name-promise.rkt"))
+(define interp-name (interpret promise promise->value))
+
+    
+(define constant-example
+  `(bind constant (fun x 42)
+         (call constant (+ (fun x x) 1))))
+
+ (define constant-example2
+    `(bind constant (fun x x)
+          (bind y (call constant (fun x (+ (fun x x) 1)))
+                42)))
+
+; (interp-name constant-example) = 42
+; (interp-name constant-example2) = 42
