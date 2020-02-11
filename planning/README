@@ -33,6 +33,8 @@ Todos:
   runs
 - Deploy the backend server (nithin)
 - Deploy the website on after the server is
-  deployed
+  deployed (once this is done we can remove the 
+  pictures from the README and just add a link to the 
+  website).
 
 -------------------------------------------------
