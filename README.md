@@ -8,7 +8,13 @@ Programming Language Playground
 
 requirements: `pip install -r requirement.txt` and node + angular
 
-run `npm install; ng serve; cd racket-rest-api; hypercorn main:app --reload` then go to `localhost:4200`
+For the first build run `npm install` to install all the packages into `node_modules`
+
+Run `hypercorn main:app --reload` in the `racket-rest-api` to start the backend server.
+
+Run `ng serve` to serve the front end to `localhost:4200`
+
+--------
 
 ![alt text](https://github.com/pl-playground/programming-language-playground/blob/master/Screenshot%202020-02-09%2011.13.46.png)
 
