@@ -1,6 +1,6 @@
 # Programming Language Playground
 
-requirements: `pip install -r requirement.txt` and node + angular
+**requirements**: `pip install -r requirement.txt` and node + angular
 
 For the first build run `npm install` to install all the packages into `node_modules`
 
