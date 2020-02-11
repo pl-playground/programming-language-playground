@@ -1,0 +1,38 @@
+--------
+Planning
+--------
+
+How to describe each language? How to get data?
+  
+for each language, have a markdown file with the 
+name of the language as the title, followed by a 
+description of the language and possibly grammar
+and evaluation rules. 
+
+How do we get the languages?
+
+Eli's languages, Matthias' languages, Languages
+from Shriram's books, Languages from  EOPL. Also
+add BSL and ISL+ interpreters from HTDP. Add the
+typed languages from TAPL, add the Tiger language.
+
+Update:
+
+I have bought the doman for $1 and hosted it on
+a free hosting service A placeholder webpage will
+be up on programming-langauge-playground.com after
+the DNS propogation
+
+Todos:
+
+- Make async calls to server
+- Make LHS of the webpage a different component,
+  this area should automatically parse the markdown
+  file associated with the chosen language
+- Add the environments folder so that `ng serve` 
+  runs
+- Deploy the backend server (nithin)
+- Deploy the website on after the server is
+  deployed
+
+-------------------------------------------------
