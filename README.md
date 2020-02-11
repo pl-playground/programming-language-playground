@@ -1,10 +1,4 @@
-======================================================================
-
-Programming Language Playground
-
-======================================================================
-
-**Team 16**
+# Programming Language Playground
 
 requirements: `pip install -r requirement.txt` and node + angular
 
@@ -14,7 +8,6 @@ Run `hypercorn main:app --reload` in the `racket-rest-api` to start the backend 
 
 Run `ng serve` to serve the front end to `localhost:4200`
 
---------
 
 ![alt text](https://github.com/pl-playground/programming-language-playground/blob/master/Screenshot%202020-02-09%2011.13.46.png)
 
